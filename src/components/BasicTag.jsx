@@ -4,12 +4,15 @@ export const Btag = ({ labels, bg }) => {
   if (!labels || labels.length === 0) {
     return null;
   }
+
   return (
     <Flex justifyContent="center">
       <Box>
-        <Tag textTransform="uppercase" mr={2} bg={bg}>
-          {labels}
-        </Tag>
+        {labels.map((label, index) => (
+          <Tag key={index} textTransform="uppercase" mr={2} bg={bg} mb={2}>
+            {label}
+          </Tag>
+        ))}
       </Box>
     </Flex>
   );
