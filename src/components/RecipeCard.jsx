@@ -1,30 +1,59 @@
-import { Card, Image, CardBody, Stack, Heading, Text } from "@chakra-ui/react";
-import { VegetarianOrVegan } from "./ui/VegetarianOrVegan";
+import {
+  Card,
+  CardBody,
+  Image,
+  Stack,
+  Text,
+  Heading,
+  Box,
+} from "@chakra-ui/react";
+import { VegetarianOrVegan } from "./VegetarianOrVegan.jsx";
+import { Btag } from "./BasicTag.jsx";
+import { DishType } from "./capitalizedDishType.jsx";
 
 export const RecipeCard = ({ hit, clickFn }) => {
   return (
     <Card
+      bg="white"
       borderRadius="xl"
-      w="sm"
+      w="23rem"
       h="30rem"
-      onClick={() => clickFn(hit)}
+      boxShadow="md"
+      transition="transform 0.3s ease"
+      _hover={{ transform: "scale(1.02)" }}
       cursor="pointer"
-      _hover={{ transform: "scale(1.01)" }}
+      onClick={() => clickFn(hit)}
     >
+      <Image
+        src={hit.recipe.image}
+        borderTopRadius="xl"
+        h="200px"
+        objectFit="cover"
+      />
       <CardBody>
-        <Image h={64} w="sm" src={hit.recipe.image} borderRadius="xl" />
-        <Stack mt="6" spacing="3">
+        <Stack spacing={2}>
           <Text
             textAlign="center"
-            as="sub"
-            fontSize="md"
-            color={"gray.500"}
-            paddingBottom={2}
+            color="gray.500"
+            fontWeight="semibold"
+            textTransform="uppercase"
           >
             {hit.recipe.mealType}
           </Text>
-          <Heading size="md">{hit.recipe.label}</Heading>
+          <Heading textAlign="center" size="md">
+            {hit.recipe.label}
+          </Heading>
           <VegetarianOrVegan labels={hit.recipe.healthLabels} />
+          <Btag labels={hit.recipe.dietLabels} bg="green.200" />
+          <DishType dishType={hit.recipe.dishType}></DishType>
+          {hit.recipe.cautions && hit.recipe.cautions.length > 0 && (
+            <Box>
+              <Text textAlign="center" fontWeight="semibold">
+                Cautions:
+              </Text>
+              <Btag labels={hit.recipe.cautions} bg="red.200" />
+            </Box>
+          )}
         </Stack>
       </CardBody>
     </Card>
