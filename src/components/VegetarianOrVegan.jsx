@@ -2,7 +2,8 @@ import { Box, Flex, Tag } from "@chakra-ui/react";
 
 export const VegetarianOrVegan = ({ labels }) => {
   const filteredLabels = labels.filter(
-    (label) => label === "Vegetarian" || label === "Vegan"
+    (label) =>
+      label === "Vegetarian" || label === "Vegan" || label === "Pescatarian"
   );
 
   return (
