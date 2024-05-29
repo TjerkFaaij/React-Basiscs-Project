@@ -16,7 +16,7 @@ export const RecipeCard = ({ hit, clickFn }) => {
     <Card
       bg="white"
       borderRadius="xl"
-      w="23rem"
+      w="25rem"
       h="30rem"
       boxShadow="md"
       transition="transform 0.3s ease"
@@ -48,7 +48,7 @@ export const RecipeCard = ({ hit, clickFn }) => {
           <DishType dishType={hit.recipe.dishType}></DishType>
           {hit.recipe.cautions && hit.recipe.cautions.length > 0 && (
             <Box>
-              <Text textAlign="center" fontWeight="semibold">
+              <Text textAlign="center" fontWeight="semibold" mb={2}>
                 Cautions:
               </Text>
               <Btag labels={hit.recipe.cautions} bg="red.200" />
