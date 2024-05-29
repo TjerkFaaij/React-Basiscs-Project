@@ -105,6 +105,27 @@ export const RecipePage = ({ hit, onClick }) => {
               </Stack>
             </>
           )}
+          <Heading as="h3" size="md" mt={4} mb={2}>
+            Total Nutrients:
+          </Heading>
+          <Stack spacing={1}>
+            {Object.entries(hit.recipe.totalNutrients)
+              .filter(
+                ([key]) =>
+                  key === "ENERC_KCAL" ||
+                  key === "PROCNT" ||
+                  key === "FAT" ||
+                  key === "CHOCDF" ||
+                  key === "CHOLE" ||
+                  key === "NA"
+              )
+              .map(([key, nutrient]) => (
+                <Text key={key}>
+                  <strong>{nutrient.label}:</strong>{" "}
+                  {nutrient.quantity.toFixed(0)} {nutrient.unit}
+                </Text>
+              ))}
+          </Stack>
         </GridItem>
       </Grid>
     </Box>
