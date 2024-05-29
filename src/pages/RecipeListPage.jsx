@@ -23,7 +23,7 @@ export const RecipeListPage = ({ clickFn }) => {
     (hit) =>
       hit.recipe.label.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (filters.length === 0 ||
-        filters.some((filter) => hit.recipe.healthLabels.includes(filter)))
+        filters.every((filter) => hit.recipe.healthLabels.includes(filter)))
   );
 
   return (
